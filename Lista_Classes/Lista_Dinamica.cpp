@@ -23,7 +23,7 @@ class Alunos {
 	    	fim = NULL;
 		}
 
-		void inserirNoFinal(int m, char n[23]) {
+		void inserirNoFinal(int m, const char n[23]) {
 			Aluno *novo = (Aluno*)malloc(sizeof(Aluno));
 			novo -> mat = m;
 			strcpy(novo -> nome, n);
@@ -44,7 +44,7 @@ class Alunos {
 		}
 
 
-		void inserirNoInicio(int m, char n[23]) {
+		void inserirNoInicio(int m, const char n[23]) {
 			Aluno *novo = (Aluno*)malloc(sizeof(Aluno));
 			novo -> mat = m;
 			strcpy(novo -> nome, n);
@@ -62,7 +62,7 @@ class Alunos {
 
 		void listar() {
 			if (lst_vazia()) {
-				cout << "\n\nLista vazia!!!";
+				cout << "\nLista vazia!!!\n";
 			} else {
 				Aluno *atual = inicio;
 
@@ -116,7 +116,7 @@ class Alunos {
 
 		void consultar(int mat) {
 			if (lst_vazia()) {
-				cout << "\n\nLista vazia!!!";
+				cout << "\nLista vazia!!!";
 			} else {
 				Aluno *atual = inicio;
 
@@ -125,12 +125,12 @@ class Alunos {
 					while (atual != NULL) {
 						if (atual -> mat == mat) {
 							cout << "\n" << atual -> mat << " - ";
-							cout << atual -> nome << endl;
+							cout << atual -> nome << endl << endl;
 							break;
 
 						} else {
 							if (atual -> prox == NULL) {
-								cout << "\nAluno nao existe!" << endl;
+								cout << "\nAluno nao existe!" << endl << endl;
 								break;
 							}
 						}
@@ -153,14 +153,36 @@ class Alunos {
 				atual = proximo;						
 			}
 			inicio = atual;
+			cout << endl;
 		}
 		
 
-		/*void //listaInversa() { // criar uma nova lista que seja o inverso da primeira
-			//
-			//
-			//
-		}*/
+		void listaInversa() { // criar uma nova lista que seja o inverso da primeira
+			Alunos *l2 = new Alunos();
+
+			for(Aluno *i = inicio; i != NULL; i = i -> prox) {
+				Aluno *novo = (Aluno*)malloc(sizeof(Aluno));
+				novo -> mat = i -> mat;
+				strcpy(novo -> nome, i -> nome);
+				novo -> prox = NULL;
+
+				if (l2 -> inicio == NULL) { //LISTA ESTA VAZIA
+					l2 -> inicio = novo;
+					l2 -> fim = novo;
+				}
+				else { //lista ja existe
+					novo->prox = l2 -> inicio;
+					l2 -> inicio = novo;
+				}
+			}
+			cout << "Lista 2 ----------------\n" << endl;
+
+			l2 -> listar();
+			l2 -> removeTodos();
+			l2 -> listar();
+
+			cout << "------------------------" << endl;
+		}
 		
 
 		void listaInvertida() { // inverter a propria lista
@@ -200,11 +222,13 @@ int main() {
 
 	l -> listar();
 
-	l -> remover(4);
+	l -> remover(2);
 
 	l -> listar();
 
-	l -> consultar(5);
+	l -> consultar(2);
+
+	l -> listaInversa();
 
 	l -> listaInvertida();
 
