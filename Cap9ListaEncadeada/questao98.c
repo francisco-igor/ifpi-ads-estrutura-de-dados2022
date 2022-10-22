@@ -1,6 +1,6 @@
-#include "../lista.h"
+#include "../lista2.h"
 
-int enesimo(int x, Lista L) {
+Item enesimo(int x, Lista L) {
     if (L == NULL) {
         return 0;
     } else {
@@ -20,12 +20,12 @@ int enesimo(int x, Lista L) {
 
 int main() {
     int num;
-    Lista l = no(5, no(1, no(5, no(3, no(7, no(5, NULL))))));
+    Lista l = no('a', no('b', no('c', no('d', NULL))));
 
     printf("Posicao requerida: ");
     scanf("%d", &num);
 
-    printf("%d", enesimo(num, l));
+    printf("%c", enesimo(num, l));
     destroi(&l);
 
     return 0;
