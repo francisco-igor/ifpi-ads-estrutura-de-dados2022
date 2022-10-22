@@ -7,7 +7,6 @@ int igual(Lista L, Lista M) {
         while (L != NULL) {
             if (L -> item != M -> item) {
                 return 0;
-                break;
             }
             L = L -> prox;
             M = M -> prox;
