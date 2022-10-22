@@ -1,6 +1,6 @@
-#include "../lista.h"
+#include "../lista2.h"
 
-void substitui(int x, int y, Lista L) {
+void substitui(char x, char y, Lista L) {
    int cont = 0;
 
     while (L != NULL) {
@@ -11,20 +11,14 @@ void substitui(int x, int y, Lista L) {
         L = L -> prox;
     }
     if (cont == 0) {
-        printf("Numero nao encontrado!\n");
+        printf("Caractere nao encontrado!\n");
     }
 }
 
 int main() {
-    int num1, num2;
-    Lista l = no(5, no(1, no(5, no(3, no(7, no(5, NULL))))));
+    Lista l = no('b', no('o', no('l', no('o', NULL))));
 
-    printf("Numero substituido: ");
-    scanf("%d", &num1);
-    printf("Numero substituto: ");
-    scanf("%d", &num2);
-
-    substitui(num1, num2, l);
+    substitui('o', 'a', l);
     exibe(l);
     destroi(&l);
 
