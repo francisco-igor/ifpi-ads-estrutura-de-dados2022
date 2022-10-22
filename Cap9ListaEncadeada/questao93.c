@@ -1,10 +1,10 @@
-#include "../lista.h"
+#include "../lista2.h"
 
-int ultimo(Lista L) {
+Item ultimo(Lista L) {
     if (L == NULL) {
-        return -1;
+        return 0;
     } else {
-        int ultimo;
+        Item ultimo;
 
         while (L != NULL) {
             ultimo = L -> item;
@@ -15,9 +15,9 @@ int ultimo(Lista L) {
 }
 
 int main() {
-    Lista l = no(5, no(1, no(5, no(3, no(7, no(5, NULL))))));
+    Lista l = no('a', no('b', no('c', no('d', no('e', NULL)))));
 
-    printf("%d ", ultimo(l));
+    printf("%c", ultimo(l));
     destroi(&l);
 
     return 0;
